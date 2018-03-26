@@ -1,0 +1,32 @@
+{% extends "@SonataAdmin/standard_layout.html.twig" %}
+
+{% block sonata_admin_content %}
+    <section class="content-header">
+        <div class="sticky-wrapper">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="content-fluid">
+                    <div class="navbar-header">
+                        <a href="#" class="navbar-brand">
+                            Exibindo as imagens dos posts
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <section class="content">
+        <div class="well well-small">
+            <div class="page-header">
+                <h1>Galeria</h1>
+            </div>
+            {% for post in posts %}
+                <a data-fancybox="group" data-caption="{{ post.title }}" href="{% path post.imagem, 'reference'%}">{% media post.imagem, 'small' %}</a>
+            {% endfor %}
+        </div>
+    </section>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("[data-fancybox]").fancybox();
+        })
+    </script>
+{% endblock %}

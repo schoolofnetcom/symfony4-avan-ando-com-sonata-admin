@@ -1,0 +1,63 @@
+sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
+    title: 'School of net'
+    title_logo: img/admin/logo.png
+    dashboard:
+        blocks:
+#            - { type: sonata.admin.block.admin_list, position: right }
+            -
+                position: top
+                class: col-md-12
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <div class="jumbotron">
+                          <div class="container">
+                            <h1 class="text-center">
+                                Bem vindo ao Sonata Admin
+                            </h1>
+                          </div
+                        </div
+            -
+                position: top
+                class: col-md-4
+                type: sonata.admin.block.stats
+                settings:
+                    code: admin.post
+                    icon: fa-pencil
+                    text: Postagens não publicadas
+                    color: bg-blue
+                    filters:
+                        status: { value: 2 }
+            -
+                position: top
+                class: col-md-4
+                type: sonata.admin.block.stats
+                settings:
+                    code: admin.category
+                    icon: fa-tag
+                    text: Categorias
+                    color: bg-red
+            -
+                position: top
+                class: col-md-4
+                type: sonata.admin.block.stats
+                settings:
+                    code: admin.author
+                    icon: fa-user
+                    text: Autores
+                    color: bg-green
+
+    assets:
+        extra_stylesheets:
+            - https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css
+        extra_javascripts:
+            - https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.block.service.text:
+        sonata.admin.block.stats:
